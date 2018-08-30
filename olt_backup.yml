@@ -1,0 +1,22 @@
+---
+- name: Rotina de Backup
+  hosts: huawei_devices
+  gather_facts: false 
+  connection: local
+
+  tasks:
+  - name: Enable
+    ce_command:
+      commands:
+        - enable
+    
+  - name: Show Running
+    ce_command:
+      commands:
+        - display current-configuration
+    register: config
+
+  - name: backup
+    copy:
+      content: "{{config.stdout[0]}}"
+      dest: "/etc/ansible/Claro/backups/show_running_{{inventory_hostname}}.txt"

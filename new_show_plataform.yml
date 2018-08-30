@@ -1,0 +1,14 @@
+---
+- hosts: ios_devices
+  gather_facts: no
+  connection: local
+ 
+  tasks:
+
+  - name: IOS | Show Plataform
+    ios_command:
+      commands:
+        - show platform 
+    register: platform 
+
+  - debug: msg= "{{ platform.stdout }}"

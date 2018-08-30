@@ -1,0 +1,23 @@
+---
+- name: Rotina de Backup
+  hosts: casa_devices 
+  gather_facts: false 
+  connection: local
+ 
+  tasks:
+  
+  - name: Paginacao OFF 
+    ios_command: 
+      commands:
+        - page-off 
+ 
+  - name: Rotina Inventario 
+    ios_command:
+      commands:
+        - show system | inc Module  
+    register: config 
+
+  - name: Gravando Arquivo
+    copy:
+      content: "{{config.stdout[0]}}"
+      dest: "/etc/ansible/Claro/inventario/show_system_{{inventory_hostname}}.txt" 

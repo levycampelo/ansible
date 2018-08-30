@@ -1,0 +1,18 @@
+---
+- hosts: arris_devices
+  gather_facts: false 
+  connection: local
+
+  tasks:
+  
+  - name: Final Banner
+    ios_command:
+      commands:
+        - show running-config 
+    register: config
+
+  - name: Gravando Arquivo
+    copy:
+      content: "{{config.stdout[0]}}"
+      dest: "/etc/ansible/Claro/backups/show_running_{{inventory_hostname}}.txt"
+
