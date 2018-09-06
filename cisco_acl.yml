@@ -1,0 +1,19 @@
+---
+- name: ACL Cisco
+  hosts: ios_devices
+  gather_facts: true
+  connection: local
+
+  tasks:
+  
+  - name: Reorganizar ACL 
+    ios_config:
+      lines:
+        - ip access-list resequence 100 10 10 
+
+  - name: Liberar novos IPS
+    ios_config:
+      lines:
+        - ip access-list extended 100
+        - 12 permit ip host 192.168.100.2 host {{ ansible_host }}
+        - 13 permit ip host 172.16.31.100 host {{ ansible_host }}
