@@ -1,0 +1,18 @@
+---
+- name: Backup
+  hosts: ios_devices 
+  gather_facts: true
+  connection: local
+ 
+  tasks:
+  
+  - name: Show Running config 
+    ios_command:
+      commands:
+        - show running 
+    register: config 
+
+  - name: Gravando Arquivo 
+    copy:
+      content: "{{config.stdout[0]}}"
+      dest: "/temp/show_running_{{inventory_hostname}}.txt" 
