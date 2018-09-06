@@ -15,4 +15,4 @@
   - name: Gravando Arquivo 
     copy:
       content: "{{config.stdout[0]}}"
-      dest: "/tmp/show_platform_{{inventory_hostname}}.txt" 
+      dest: "/tmp/show_inventory_{{inventory_hostname}}.txt" 
