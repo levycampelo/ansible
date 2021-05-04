@@ -1,6 +1,6 @@
 ---
 - name: skiping_certs 
-  hosts: ios_devices 
+  hosts: my_cisco
   gather_facts: false
   connection: local
   ignore_errors: yes
