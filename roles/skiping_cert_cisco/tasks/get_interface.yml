@@ -1,0 +1,8 @@
+---
+- name: get-mac
+  ios_command:
+    provider:
+      timeout: 120
+    commands:
+      - show running-config | inc interface Cable 
+  register: cable_result

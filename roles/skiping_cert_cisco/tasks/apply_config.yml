@@ -1,0 +1,12 @@
+---
+- name: apply-config
+  ios_command:
+    provider:
+      timeout: 120
+    commands:
+    - config t
+    - interface {{ item.split(' ')[1] }}
+    - cable privacy skip-validity-period 
+    - exit
+  with_items:
+    - "{{ cable_result.stdout_lines[0] }}"

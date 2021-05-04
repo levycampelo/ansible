@@ -1,0 +1,9 @@
+---
+- name: apply-config
+  ios_command:
+    provider:
+      timeout: 120
+    commands:
+    - "configure interface cable-mac '{{ item.split(' ')[2] }}' cable privacy chk-validity-period false"
+  with_items:
+    - "{{ cable_result.stdout_lines[0] }}"

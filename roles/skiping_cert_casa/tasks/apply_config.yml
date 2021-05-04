@@ -1,0 +1,12 @@
+---
+- name: apply-config
+  ios_command:
+    provider:
+      timeout: 120
+    commands:
+    - config
+    - interface docsis-mac {{ item.split(' ')[3] }}
+    - no cable privacy valid-period-check
+    - exit
+  with_items:
+    - "{{ cable_result.stdout_lines[0] }}"

@@ -1,0 +1,7 @@
+---
+- name: save-config
+  ios_command:
+    provider:
+      timeout: 120
+    commands:
+    - wr 
