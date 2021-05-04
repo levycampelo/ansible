@@ -4,7 +4,7 @@
     provider:
       timeout: 120
     commands:
-    - config t
+    - config terminal
     - interface {{ item.split(' ')[1] }}
     - cable privacy skip-validity-period 
     - exit
