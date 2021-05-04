@@ -1,9 +1,0 @@
----
-- name: --------------------------------- GET INTERFACE ------------------------------
-  include_tasks: get_interface.yml
-
-- name: --------------------------------- APPLY_CONFIG -------------------------------
-  include_tasks: apply_config.yml 
-
-- name: ---------------------------------- SAVE_CONFIG ------------------------------- 
-  include_tasks: save.yml
