@@ -1,8 +1,0 @@
----
-- name: get-mac
-  ios_command:
-    provider:
-      timeout: 120
-    commands:
-      - "show running-config full | include 'cable bundle'"
-  register: cable_result
