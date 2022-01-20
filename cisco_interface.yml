@@ -1,0 +1,20 @@
+- name: Inventario
+  hosts: ios_devices 
+  gather_facts: true
+  connection: local
+ 
+  tasks:
+
+  - name: Set interfaces
+    cisco.ios.ios_interfaces:
+      config:
+      - name: GigabitEthernet0/2
+        description: Activate interface
+        enabled: true
+      - name: GigabitEthernet0/3
+        description: Configured interface
+        mtu: 1500
+        enabled: true
+        speed: 1000
+        duplex: full
+      state: merged
